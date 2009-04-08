@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<syntax name="espresso.built-in.regex-search-expression">
+    <zones>
+        <zone name="regex.anchor">
+            <expression>\\[bBAZzG]|\^|\$</expression>
+        </zone>
+        <zone name="regex.character.numeric">
+            <expression>\\([0-7]{3}|\\x(\h\h|\{\h{,8}\}))</expression>
+        </zone>
+        <zone name="regex.back-reference">
+            <expression>\\[1-9]\d*</expression>
+        </zone>
+        <zone name="regex.back-reference.named">
+            <expression>(\\k\&lt;)([a-z]\w*)(\>)</expression>
+            <capture number="1" name="keyword.other.back-reference.named"/>
+            <capture number="2" name="entity.name.section.back-reference"/>
+            <capture number="3" name="keyword.other.back-reference.named"/>
+        </zone>
+        <zone name="regex.character-class.posix">
+            <expression>\[\:(\^)?(alnum|alpha|ascii|blank|cntrl|x?digit|graph|lower|print|punct|space|upper)\]</expression>
+        </zone>
+        <zone name="regex.operator.quantifier">
+            <expression>[?+*][?+]?|\{(\d+,\d+|\d+,|,\d+|\d+)\}\??</expression>
+        </zone>
+        <zone name="regex.operator.or">
+            <expression>\|</expression>
+        </zone>
+        <zone name="regex.comment.block">
+            <starts-with>
+                <expression>\(\?\#</expression>
+            </starts-with>
+            <ends-with>
+                <expression>\)</expression>
+            </ends-with>
+        </zone>
+        <zone name="regex.comment.line.number-sign">
+            <expression>(?&lt;=^|\s)#\s[[a-zA-Z0-9,. \t?!-:][^\x{00}-\x{7F}]]*$</expression>
+        </zone>
+        <zone name="regex.option-toggle">
+            <expression>\(\?[imx-]+\)</expression>
+        </zone>
+        <zone name="regex.group.assertion">
+            <starts-with>
+                <expression>(\()((\?=)|(\?!)|(\?&lt;=)|(\?&lt;!))</expression>
+                <capture number="1" name="punctuation.definition.group"/>
+                <capture number="3" name="regex.assertion.lookahead"/>
+                <capture number="4" name="regex.assertion.negative-lookahead"/>
+                <capture number="5" name="regex.assertion.lookbehind"/>
+                <capture number="6" name="regex.assertion.negative-lookbehind"/>
+            </starts-with>
+            <ends-with>
+                <expression>(\))</expression>
+                <capture number="1" name="punctuation.definition.group"/>
+            </ends-with>
+            <subzones>
+                <include syntax="self"/>
+            </subzones>
+        </zone>
+        <zone name="regex.group">
+            <starts-with>
+                <expression>(\()((\?(>|[imx-]*:))|(\?&lt;)([a-z]\w*)(>))?</expression>
+                <capture number="1" name="punctuation.definition.group"/>
+                <capture number="3" name="keyword.other.group-options"/>
+                <capture number="5" name="keyword.other.group-options"/>
+                <capture number="6" name="entity.name.section.group"/>
+                <capture number="7" name="keyword.other.group-options"/>
+            </starts-with>
+            <ends-with>
+                <expression>(\))</expression>
+                <capture number="1" name="punctuation.definition.group"/>
+            </ends-with>
+            <subzones>
+                <include syntax="self"/>
+            </subzones>
+        </zone>
+        <include collection="regex.character-class"/>
+    </zones>
+    <library>
+        <collection name="regex.character-class">
+            <zone name="regex.character-class">
+                <expression>\\[wWsSdDhH]|\.</expression>
+            </zone>
+            <zone name="regex.escaped.backslash">
+                <expression>\\.</expression>
+            </zone>
+            <zone name="regex.character-class.set">
+                <starts-with>
+                    <expression>(\[)(\^)?</expression>
+                    <capture number="1" name="punctuation.definition.character-class"/>
+                    <capture number="2" name="keyword.operator.negation"/>
+                </starts-with>
+                <ends-with>
+                    <expression>(\])</expression>
+                    <capture number="1" name="punctuation.definition.character-class"/>
+                </ends-with>
+                <subzones>
+                    <include collection="regex.character-class"/>
+                    <zone name="regex.character-class.range">
+                        <expression>(.|(\\.))\-([^\]]|(\\.))</expression>
+                        <capture number="2" name="regex.escaped.backslash"/>
+                        <capture number="4" name="regex.escaped.backslash"/>
+                    </zone>
+                    <zone name="regex.operator.intersection">
+                        <expression>&amp;&amp;</expression>
+                    </zone>
+                </subzones>
+            </zone>
+        </collection>
+    </library>
+</syntax>

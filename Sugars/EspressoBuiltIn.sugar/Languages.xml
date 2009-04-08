@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings>
+
+	<language id="espresso.built-in.RegEx" hidden="true">
+		
+		<root-zone>espresso.built-in.regex-search-expression</root-zone>
+		<name>Espresso RegEx Search Expression</name>
+		<detectors>
+			<extension>espressoregex</extension>
+		</detectors>
+		
+	</language>
+	
+</settings>

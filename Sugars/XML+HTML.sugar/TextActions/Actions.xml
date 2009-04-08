@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<action-recipes>
+	
+	<action-alias id="com.macrabbit.TextActions.XMLHTML.CloseTag.Alias" category="hidden">
+	
+		<title>Close Tag (HTML)</title>
+		<text-trigger key-equivalent="/">&lt;</text-trigger>
+		<action-identifier>com.macrabbit.TextActions.CloseTag</action-identifier>
+		<syntax-context>html, html *, xml, xml *</syntax-context>
+		
+	</action-alias>
+	
+	<snippet id="com.macrabbit.TextActions.XMLHTML.NewTag" category="hidden">
+		<title>New Tag</title>
+		<text>&lt;${1:tag}>$0&lt;/${1/([a-zA-Z:]*).*/\1/}></text>
+		<when-disabled>hide</when-disabled>
+	</snippet>
+	
+	<snippet id="com.macrabbit.TextActions.XMLHTML.Doctype.html4strict" category="tools.Snippets">
+		<title>HTML 4.01 Strict</title>
+		<text><![CDATA[<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">]]></text>
+		<syntax-context>html, html *</syntax-context>
+	</snippet>
+	
+	<snippet id="com.macrabbit.TextActions.XMLHTML.Doctype.html4transitional" category="tools.Snippets">
+		<title>HTML 4.01 Transitional</title>
+		<text><![CDATA[<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">]]></text>
+		<syntax-context>html, html *</syntax-context>
+	</snippet>
+	
+	<snippet id="com.macrabbit.TextActions.XMLHTML.Doctype.xhtml1strict" category="tools.Snippets">
+		<title>XHTML 1.0 Strict</title>
+		<text><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">]]></text>
+		<syntax-context>html, html *</syntax-context>
+	</snippet>
+	
+	<snippet id="com.macrabbit.TextActions.XMLHTML.Doctype.xhtml1transitional" category="tools.Snippets">
+		<title>XHTML 1.0 Transitional</title>
+		<text><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">]]></text>
+		<syntax-context>html, html *</syntax-context>
+	</snippet>
+	
+	<snippet id="com.macrabbit.TextActions.XMLHTML.Doctype.xhtml11" category="tools.Snippets">
+		<title>XHTML 1.1</title>
+		<text><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">]]></text>
+		<syntax-context>html, html *</syntax-context>
+	</snippet>
+	
+	<snippet id="com.macrabbit.TextActions.XMLHTML.Snippet-CDATA" category="tools.Snippets/XMLHTML">
+		<title>CDATA</title>
+		<text>&lt;![CDATA[${0:character data}]]&gt;</text>
+		<syntax-context>text.xml, text.xml *</syntax-context>
+	</snippet>
+	
+</action-recipes>

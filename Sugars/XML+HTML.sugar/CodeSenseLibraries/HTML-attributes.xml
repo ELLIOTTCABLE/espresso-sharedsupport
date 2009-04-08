@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+CodeSense Libraries simply define lists of completions, categorized by keys. They don't define any criteria for when they should be used; this is the domain of a CodeSense Provider.
+
+-->
+<codesense version="1.0">
+
+	<behavior>
+		<append-dynamic>
+			<matched-suffix>(\s*=)|[^=]</matched-suffix>
+			<transform-into>(?1::="$1"$0)</transform-into>
+		</append-dynamic>
+	</behavior>
+	
+	<set name="com.macrabbit.html.tag.standard-attributes">
+		<completion string="id" />
+		<completion string="class" />
+		<completion string="title" />
+		<completion string="style" />
+		<completion string="tabindex" />
+		<completion string="accesskey" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.event-attributes">
+		<completion string="onfocus" />
+		<completion string="onblur" />
+		<completion string="onclick" />
+		<completion string="ondblclick" />
+		<completion string="onmousedown" />
+		<completion string="onmouseup" />
+		<completion string="onmouseover" />
+		<completion string="onmousemove" />
+		<completion string="onmouseout" />
+		<completion string="onkeypress" />
+		<completion string="onkeydown" />
+		<completion string="onkeyup" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.a.attributes">
+		<completion string="href" />
+		<completion string="hreflang" />
+		<completion string="name" />
+		<completion string="rel" />
+		<completion string="target" />
+		<completion string="type" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.applet.attributes">
+		<completion string="height" />
+		<completion string="width" />
+		<completion string="align" />
+		<completion string="alt" />
+		<completion string="archive" />
+		<completion string="code" />
+		<completion string="codebase" />
+		<completion string="hspace" />
+		<completion string="name" />
+		<completion string="object" />
+		<completion string="vspace" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.area.attributes">
+		<completion string="alt" />
+		<completion string="coords" />
+		<completion string="href" />
+		<completion string="nohref" />
+		<completion string="shape" />
+		<completion string="target" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.base.attributes">
+		<completion string="href" />
+		<completion string="target" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.bdo.attributes">
+		<completion string="dir" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.blockquote.attributes">
+		<completion string="cite" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.button.attributes">
+		<completion string="disabled" />
+		<completion string="name" />
+		<completion string="type" />
+		<completion string="value" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.col.attributes">
+		<completion string="align" />
+		<completion string="char" />
+		<completion string="charoff" />
+		<completion string="span" />
+		<completion string="valign" />
+		<completion string="width" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.colgroup.attributes">
+		<completion string="align" />
+		<completion string="char" />
+		<completion string="charoff" />
+		<completion string="span" />
+		<completion string="valign" />
+		<completion string="width" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.del.attributes">
+		<completion string="cite" />
+		<completion string="datetime" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.dir.attributes">
+		<completion string="compact" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.frame.attributes">
+		<completion string="frameborder" />
+		<completion string="longdesc" />
+		<completion string="marginheight" />
+		<completion string="marginwidth" />
+		<completion string="name" />
+		<completion string="noresize" />
+		<completion string="scrolling" />
+		<completion string="src" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.frameset.attributes">
+		<completion string="cols" />
+		<completion string="rows" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.head.attributes">
+		<completion string="profile" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.html.attributes">
+		<completion string="xmlns" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.iframe.attributes">
+		<completion string="align" />
+		<completion string="frameborder" />
+		<completion string="longdesc" />
+		<completion string="marginheight" />
+		<completion string="marginwidth" />
+		<completion string="name" />
+		<completion string="noresize" />
+		<completion string="scrolling" />
+		<completion string="src" />
+		<completion string="width" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.img.attributes">
+		<completion string="alt" />
+		<completion string="src" />
+		<completion string="height" />
+		<completion string="width" />
+		<completion string="usemap" />
+		<completion string="longdesc" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.input.attributes">
+		<completion string="accept" />
+		<completion string="alt" />
+		<completion string="checked" />
+		<completion string="disabled" />
+		<completion string="maxlength" />
+		<completion string="name" />
+		<completion string="readonly" />
+		<completion string="size" />
+		<completion string="src" />
+		<completion string="type" />
+		<completion string="value" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.ins.attributes">
+		<completion string="cite" />
+		<completion string="datetime" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.label.attributes">
+		<completion string="for" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.link.attributes">
+		<completion string="charset" />
+		<completion string="href" />
+		<completion string="hreflang" />
+		<completion string="media" />
+		<completion string="rel" />
+		<completion string="rev" />
+		<completion string="target" />
+		<completion string="type" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.map.attributes">
+		<completion string="name" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.meta.attributes">
+		<completion string="http-equiv" />
+		<completion string="content" />
+		<completion string="name" />
+		<completion string="scheme" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.object.attributes">
+		<completion string="align" />
+		<completion string="archive" />
+		<completion string="border" />
+		<completion string="classid" />
+		<completion string="codebase" />
+		<completion string="codetype" />
+		<completion string="data" />
+		<completion string="declare" />
+		<completion string="height" />
+		<completion string="name" />
+		<completion string="standby" />
+		<completion string="type" />
+		<completion string="usemap" />
+		<completion string="width" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.optgroup.attributes">
+		<completion string="label" />
+		<completion string="disabled" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.option.attributes">
+		<completion string="disabled" />
+		<completion string="label" />
+		<completion string="selected" />
+		<completion string="value" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.param.attributes">
+		<completion string="name" />
+		<completion string="type" />
+		<completion string="value" />
+		<completion string="valuetype" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.q.attributes">
+		<completion string="cite" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.script.attributes">
+		<completion string="type" />
+		<completion string="charset" />
+		<completion string="defer" />
+		<completion string="language" />
+		<completion string="src" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.select.attributes">
+		<completion string="disabled" />
+		<completion string="multiple" />
+		<completion string="name" />
+		<completion string="size" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.style.attributes">
+		<completion string="type" />
+		<completion string="media" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.table.attributes">
+		<completion string="border" />
+		<completion string="cellpadding" />
+		<completion string="cellspacing" />
+		<completion string="frame" />
+		<completion string="rules" />
+		<completion string="summary" />
+		<completion string="width" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.tbody.attributes">
+		<completion string="char" />
+		<completion string="charoff" />
+		<completion string="valign" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.td.attributes">
+		<completion string="abbr" />
+		<completion string="axis" />
+		<completion string="char" />
+		<completion string="charoff" />
+		<completion string="colspan" />
+		<completion string="headers" />
+		<completion string="rowspan" />
+		<completion string="scope" />
+		<completion string="valign" />
+		<completion string="width" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.textarea.attributes">
+		<completion string="cols" />
+		<completion string="rows" />
+		<completion string="disabled" />
+		<completion string="name" />
+		<completion string="readonly" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.tfoot.attributes">
+		<completion string="char" />
+		<completion string="charoff" />
+		<completion string="valign" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.th.attributes">
+		<completion string="abbr" />
+		<completion string="axis" />
+		<completion string="char" />
+		<completion string="charoff" />
+		<completion string="colspan" />
+		<completion string="headers" />
+		<completion string="rowspan" />
+		<completion string="scope" />
+		<completion string="valign" />
+		<completion string="width" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.thead.attributes">
+		<completion string="char" />
+		<completion string="charoff" />
+		<completion string="valign" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.tr.attributes">
+		<completion string="char" />
+		<completion string="charoff" />
+		<completion string="valign" />
+	</set>
+	
+</codesense>

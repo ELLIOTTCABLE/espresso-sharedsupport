@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<injections>
+
+	<injection name="injections.text.html.cssfix" selector="embedded-style.html *" action="insert-before-children">
+		<cut-off>&lt;/style></cut-off>
+	</injection>
+
+	<injection name="injections.text.html.style-attribute" selector="tag.open.html" action="insert-before-children">
+	
+		<zone>
+			<expression>\b(style)=((")([^"]*)("))</expression>
+			<capture number="1" name="attribute-name.style"/>
+			<capture number="2" name="string.quoted.double"/>
+			<capture number="3" name="punctuation.definition.begin"/>
+			<capture number="4" name="embedded.property-list.css">
+				<subzones>
+					<include syntax="styling.css" collection="properties"/>
+				</subzones>
+			</capture>
+			<capture number="5" name="punctuation.definition.end"/>
+		</zone>
+	
+		<zone>
+			<expression>\b(style)=((')([^']*)('))</expression>
+			<capture number="1" name="attribute-name.style"/>
+			<capture number="2" name="string.quoted.single"/>
+			<capture number="3" name="punctuation.definition.begin"/>
+			<capture number="4" name="embedded.property-list.css">
+				<subzones>
+					<include syntax="styling.css" collection="properties"/>
+				</subzones>
+			</capture>
+			<capture number="5" name="punctuation.definition.end"/>
+		</zone>
+		
+	</injection>
+
+	<injection name="injections.text.html.jsfix" selector="embedded-javascript.html *" action="insert-before-children">
+		<cut-off>&lt;/script></cut-off>
+	</injection>
+	
+	<injection name="injections.text.html.js-attribute" selector="tag.open.html" action="insert-before-children">
+	
+		<zone>
+			<expression>\b(onfocus|onblur|onclick|ondblclick|onmousedown|onmouseup|onmouseover|onmousemove|onmouseout|onkeypress|onkeydown|onkeyup)=((")([^"]*)("))</expression>
+			<capture number="1" name="attribute-name.js"/>
+			<capture number="2" name="string.quoted.double"/>
+			<capture number="3" name="punctuation.definition.begin"/>
+			<capture number="4" name="embedded.sourcecode.js">
+				<subzones>
+					<include syntax="sourcecode.js"/>
+				</subzones>
+			</capture>
+			<capture number="5" name="punctuation.definition.end"/>
+		</zone>
+		
+	</injection>
+	
+</injections>

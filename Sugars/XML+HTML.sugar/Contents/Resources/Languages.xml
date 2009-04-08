@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings>
+
+	<language id="espresso.default.HTML">
+		
+		<!-- The root zone name for this language. This can be defined in one of the syntax definitions under Syntaxes, or in another bundle. -->
+		<root-zone>text.html.basic</root-zone>
+		
+		<!-- The name of the language as presented to the user -->
+		<name>HTML</name>
+		
+		<!-- Ways to detect if a certain file is in this language -->
+		<detectors>
+			<extension>html</extension>
+			<extension>htm</extension>
+			<extension>shtml</extension>
+			<extension>shtm</extension>
+			<extension>xhtml</extension>
+			<match-content lines="2"><![CDATA[<!DOCTYPE html PUBLIC]]></match-content>
+			<match-content lines="1"><![CDATA[<html]]></match-content>
+		</detectors>
+		
+	</language>
+	
+	<language id="espresso.default.XML">
+		
+		<root-zone>text.xml</root-zone>
+		<name>XML</name>
+		<detectors>
+			<extension>xml</extension>
+			<match-content><![CDATA[<\?xml]]></match-content>
+		</detectors>
+		
+	</language>
+
+	<language id="espresso.default.XSL">
+		
+		<root-zone>text.xml.xsl</root-zone>
+		<name>XSL</name>
+		<detectors>
+			<extension>xsl</extension>
+			<extension>xslt</extension>
+		</detectors>
+		
+	</language>
+	
+</settings>

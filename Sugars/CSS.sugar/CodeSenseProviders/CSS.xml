@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+CodeSense Providers map contexts in a document to possible completions. The actual completions are defined in the various CodeSense libraries, categorized using their key. A CodeSense Provider tells Espresso what CodeSense libraries are active in the current context. One of these XML files can contain many <provider> elements.
+
+-->
+<codesense>
+
+	<!-- CSS property values -->
+	<provider>
+		<!-- The selector element specifies in what document contexts the provider is active. -->
+		<selector>css > property-name:capture(name) + property-value - punctuation.separator</selector>
+		
+		<!-- The completions element points to the CodeSense Library key that has to be used. It can contain placeholders for captured pieces of text from the selector. -->
+		<completions>com.macrabbit.css.property.${name}</completions>
+		
+		<!-- The complete-match element defines a regular expression for the piece of text that is completed by this provider. It's not necessary to append an end-of-line symbol: this happens automatically. Note that even if this provider is active in the current context, and the expression is matched, it may still be ignored for a completion if other providers match a different piece of the same text. -->
+		<complete-match>[a-zA-Z0-9-]*</complete-match>
+		
+		<!-- The require-suffix element (optional) defines a regular expression which the text *after* the completion has to match. It's not necessary to prepend a begin-of-line symbol: this happens automatically. -->
+		<require-suffix>[^:]|</require-suffix>
+	</provider>
+	
+	<!-- CSS properties -->
+	<provider>
+		<selector>property-list.css, property-list.css > property-name, property-list.css > property-value punctuation.separator</selector>
+		<completions>com.macrabbit.css.properties</completions>
+		<complete-match capture="2">(^|;|{)\s*([a-zA-Z0-9-]*)</complete-match>
+		<require-suffix>(:|\s|}|^)</require-suffix>
+	</provider>
+
+	<!-- CSS properties that should be reluctantly suggested because they're browser specific -->
+	<provider>
+		<selector>property-list.css, property-list.css > property-name, property-list.css > property-value punctuation.separator</selector>
+		<completions>com.macrabbit.css.browser-specific-properties</completions>
+		<complete-match capture="2">(^|;|{)\s*([a-zA-Z0-9-]+)</complete-match>
+		<require-suffix>(:|\s|}|^)</require-suffix>
+	</provider>
+	
+</codesense>

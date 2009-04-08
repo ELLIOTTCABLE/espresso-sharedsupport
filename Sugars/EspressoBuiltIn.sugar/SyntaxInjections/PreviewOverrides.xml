@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<injections>
+
+	<!-- For now, only insert into CSS documents -->
+	<injection name="injections.css.override-comments" selector="comment.block.css" action="insert-before-children">
+		<zone name="override-marker">
+			<expression>@override</expression>
+		</zone>
+		<zone name="url">
+			<expression>([a-z]+)://[^\s]+</expression>
+		</zone>
+	</injection>
+	
+</injections>

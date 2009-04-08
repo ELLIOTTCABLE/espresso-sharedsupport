@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<tool-recipes>
+	
+	<tool type="toolbar" id="com.macrabbit.TextTools.NewStyle" category="macrabbit">
+	
+		<class>ESTextActionToolbarTool</class>
+		<setup>
+			<main-action-selector>NewStyle</main-action-selector>
+			
+			<label>New Style</label>
+			<palette-label>New Style</palette-label>
+			<image>ToolNewStyle</image>
+		</setup>
+		
+	</tool>
+	
+</tool-recipes>

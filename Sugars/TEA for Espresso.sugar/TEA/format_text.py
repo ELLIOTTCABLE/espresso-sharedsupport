@@ -1,0 +1,60 @@
+'''
+Formats the selected text by wrapping it in the passed segment
+
+Will use an automatically formatted snippet for a single selection,
+or a simple text replacement for multiple selections
+'''
+
+import tea_actions as tea
+
+def act(context, default=None, undo_name=None, **syntaxes):
+    '''
+    Required action method
+    
+    default parameter is plain text (not a snippet), but should contain the
+    $SELECTED_TEXT string to place the selected text
+    '''
+    # Check for root-zone specific override
+    root_zone = tea.get_root_zone(context)
+    if root_zone in syntaxes:
+        root_insertion = syntaxes[root_zone]
+    else:
+        root_insertion = default
+    # Get the selected ranges
+    ranges = tea.get_ranges(context)
+    if len(ranges) is 1:
+        # Since we've only got one selection we can use a snippet
+        range = ranges[0]
+        # Check for specific zone override
+        zone = tea.get_active_zone(context, range)
+        if zone in syntaxes:
+            insertion = syntaxes[zone]
+        else:
+            insertion = root_insertion
+        # Make sure the range is actually a selection
+        if range.length > 0:
+            text = tea.get_selection(context, range)
+            snippet = '${1:' + insertion.replace('$SELECTED_TEXT',
+                                                 '${2:$SELECTED_TEXT}') + '}$0'
+        else:
+            # Not a selection, just wrap the cursor
+            text = ''
+            snippet = insertion.replace('$SELECTED_TEXT', '$1') + '$0'
+        snippet = tea.construct_snippet(text, snippet)
+        return tea.insert_snippet_over_range(context, snippet, range,
+                                                 undo_name)
+    # Since we're here, it must not have been a single selection
+    insertions = tea.new_recipe()
+    for range in ranges:
+        # Check for specific zone override
+        zone = tea.get_active_zone(context, range)
+        if zone in syntaxes:
+            insertion = syntaxes[zone]
+        else:
+            insertion = root_insertion
+        text = tea.get_selection(context, range)
+        text = insertion.replace('$SELECTED_TEXT', text)
+        insertions.addReplacementString_forRange_(text, range)
+    if undo_name is not None:
+        insertions.setUndoActionName_(undo_name)
+    return context.applyTextRecipe_(insertions)

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<action-categories>
+
+	<category id="actions.text.important" show="inline separated" />
+	
+	<category id="actions.file.open" show="sub">
+		<title>Open Title!</title>
+	</category>
+	
+	<!-- General purpose category for text snippets (actions in this category are shown in the Tools) -->
+	<category id="tools.Snippets" show="sub hidden">
+		<title>Snippets</title>
+	</category>
+	<category id="tools.UserSnippets" show="sub hidden">
+		<title>User Snippets</title>
+	</category>
+	
+	<!-- General purpose category for actions that should not be shown in the UI (useful for text trigger actions) -->
+	<category id="hidden" show="hidden" />
+	
+</action-categories>

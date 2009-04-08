@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemizer>
+
+	<recipe name="built-in.tag.xml.processing-instruction">
+		<class>ESXMLItem</class>
+		<selector>xml.tag.self-closing.processing-instruction:has-child(name:capture(name))</selector>
+	</recipe>
+
+	<recipe name="built-in.tag.xml.collection">
+		<start-selector>xml.tag.open:has-child(name:capture(name))</start-selector>
+		<end-selector>xml.tag.close:has-child(name[text == $name.text])</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+		<class>ESXMLItem</class>
+	</recipe>
+	
+	<recipe name="built-in.self-closing-tag.xml">
+		<selector>xml.tag.open:has-child(name:capture(name), empty-element-marker), xml.tag.self-closing:has-child(name:capture(name)), xml.tag.open:has-child(name:capture(name), self-closing)</selector>
+		<class>ESXMLItem</class>
+	</recipe>
+
+	<recipe name="built-in.tag.xsl.collection">
+		<start-selector>xml.tag.open:has-child(name:capture(tagname):has-child(namespace[text == 'xsl'], localname:capture(name)))</start-selector>
+		<end-selector>xml.tag.close:has-child(name[text == $tagname.text])</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+		<class>ESXSLItem</class>
+	</recipe>
+	
+	<recipe name="built-in.self-closing-tag.xsl">
+		<selector>xml.tag.open:has-child(name:capture(tagname):has-child(namespace[text == 'xsl'], localname:capture(name)), self-closing)</selector>
+		<class>ESXSLItem</class>
+	</recipe>
+
+	<recipe name="built-in.comment">
+		<class>ESCommentItem</class>
+		<selector>xml.comment</selector>
+	</recipe>
+	
+</itemizer>

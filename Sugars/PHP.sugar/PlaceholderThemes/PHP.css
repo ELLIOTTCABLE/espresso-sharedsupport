@@ -1,0 +1,57 @@
+/*
+	@theme PHP Placeholder
+	@placeholder php, php-html
+*/
+
+@base {
+	color: #333;
+	background-color: #fff;
+}
+
+php {
+	spell-check: disabled;
+	color: #333;
+}
+
+php variable, string.double variable {
+	color: #4F9FCF;
+	newcolor: #6FBFFF;
+}
+
+php variable > group {
+	color: #3482da;
+	background-color: #f2fbfe;
+}
+
+php.definition{
+	color: #d44950;
+}
+
+php name {
+	color: #4f9fcf;
+	newcolor: #6fbfff;
+}
+
+php modifier {
+	color: #d48080;
+}
+
+php include {
+	color: #555;
+	background-color: #f8f8f8;
+	font-style: italic;
+}
+
+php identifier.function {
+	color: #699d36;
+	font-weight: bold;
+}
+
+php integer {
+    color: #6700b9;
+	background-color: #fbf2fe;
+}
+
+php phpDoc.keyword {
+	color: #ad91ba;
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+CodeSense Libraries simply define lists of completions, categorized by keys. They don't define any criteria for when they should be used; this is the domain of a CodeSense Provider.
+
+-->
+<codesense version="1.0">
+	
+	<set name="com.macrabbit.html.tag.a.attribute-values.href">
+		<completion string="../" />
+		<completion string="../../" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.input.attribute-values.type">
+		<completion string="text" />
+		<completion string="submit" />
+		<completion string="checkbox" />
+		<completion string="radio" />
+		<completion string="password" />
+		<completion string="hidden" />
+		<completion string="image" />
+		<completion string="reset" />
+		<completion string="file" />
+		<completion string="button" />
+	</set>
+	
+	<set name="com.macrabbit.html.attribute-values.href">
+		<completion string="../" />
+		<completion string="../../" />
+	</set>
+	
+</codesense>

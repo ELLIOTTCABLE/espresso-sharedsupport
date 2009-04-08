@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<tool-recipes>
+	
+	<tool type="toolbar" id="com.macrabbit.TextTools.Preview" category="macrabbit">
+	
+		<class>ESPreviewToolbarTool</class>
+		<setup>
+			<label>Preview</label>
+			<palette-label>Preview</palette-label>
+			<image>Preview</image>
+		</setup>
+		
+	</tool>
+	
+	<tool type="toolbar" id="com.macrabbit.TextTools.Comment" category="macrabbit">
+	
+		<class>ESCommentToolbarTool</class>
+		<setup>
+			<label>Comment</label>
+			<palette-label>New Comment</palette-label>
+			<image>ToolNewComment</image>
+		</setup>
+		
+	</tool>
+	
+	<tool type="toolbar" id="com.macrabbit.TextTools.Style" category="some.category">
+	
+		<class>ESTextActionToolbarTool</class>
+		<setup>
+			<menu-action-selector>CloseTag</menu-action-selector>
+			<label>New Style</label>
+			<palette-label>New Style</palette-label>
+			<image>ToolStyle</image>
+		</setup>
+		
+	</tool>
+	
+	<tool type="toolbar" id="com.macrabbit.TextTools.Versioning" category="some.category">
+	
+		<class>ESTextActionToolbarTool</class>
+		<setup>
+			<label>Versioning</label>
+			<palette-label>Milestones</palette-label>
+			<image>ToolVersioning</image>
+		</setup>
+		
+	</tool>
+	
+</tool-recipes>

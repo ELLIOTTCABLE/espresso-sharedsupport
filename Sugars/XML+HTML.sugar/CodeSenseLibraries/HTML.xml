@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+CodeSense Libraries simply define lists of completions, categorized by keys. They don't define any criteria for when they should be used; this is the domain of a CodeSense Provider.
+
+-->
+<codesense version="1.0">
+	
+	<set name="com.macrabbit.html.tags">
+	
+		<!-- Default behavior -->
+		<behavior>
+			<append-dynamic>
+				<matched-suffix>(\s*:)|[^:]</matched-suffix>
+				<transform-into>(?1::>$0&lt;/${completion}>)</transform-into>
+			</append-dynamic>
+		</behavior>
+		
+		
+		<completion string="a">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(?1:: href="${1:http://}">${2:Link Text}&lt;/a>$0)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="meta">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(?1::${1: http-equiv="$2" content="$3"} />)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="link">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(?1:: rel="$1" href="$2" type="$3" $4/>$0)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="script">
+			<behavior>
+				<append-static> src="$1" type="text/javascript">&lt;/${completion}>$0</append-static>
+			</behavior>
+		</completion>
+		
+		<completion string="img">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(?1:: src="$1" $2/>$0)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="form">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(?1:: method="${1:post}" action="$2">$0&lt;/form>)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="input">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(?1:: type="$1" name="$2" value="$3" />$0)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="label">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(?1::${1: for="$2"}>$0&lt;/label>)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="span">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(?1::${1: class="$2"}>$0&lt;/span>)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="div">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(?1::${1: id="$2"}>$0&lt;/div>)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="abbr" />
+		<completion string="acronym" />
+		<completion string="address" />
+		<completion string="applet" />
+		<completion string="area" />
+		<completion string="b" />
+		<completion string="base" />
+		<completion string="blockquote" />
+		<completion string="br" />
+		<completion string="button" />
+		<completion string="caption" />
+		<completion string="center" />
+		<completion string="cite" />
+		<completion string="code" />
+		<completion string="col" />
+		<completion string="colgroup" />
+		<completion string="dd" />
+		<completion string="del" />
+		<completion string="dfn" />
+		<completion string="dir" />
+		<completion string="dl" />
+		<completion string="dt" />
+		<completion string="em" />
+		<completion string="fieldset" />
+		<completion string="frame" />
+		<completion string="frameset" />
+		<completion string="head" />
+		<completion string="h1" />
+		<completion string="h2" />
+		<completion string="h3" />
+		<completion string="h4" />
+		<completion string="h5" />
+		<completion string="h6" />
+		<completion string="hr" />
+		<completion string="html" />
+		<completion string="i" />
+		<completion string="iframe" />
+		<completion string="ins" />
+		<completion string="kdb" />
+		<completion string="legend" />
+		<completion string="li" />
+		<completion string="map" />
+		<completion string="menu" />
+		<completion string="noframes" />
+		<completion string="noscript" />
+		<completion string="object" />
+		<completion string="ol" />
+		<completion string="optgroup" />
+		<completion string="option" />
+		<completion string="p" />
+		<completion string="param" />
+		<completion string="pre" />
+		<completion string="q" />
+		<completion string="samp" />
+		<completion string="select" />
+		<completion string="small" />
+		<completion string="strike" />
+		<completion string="strong" />
+		<completion string="style" />
+		<completion string="sub" />
+		<completion string="sup" />
+		<completion string="table" />
+		<completion string="tbody" />
+		<completion string="td" />
+		<completion string="textarea" />
+		<completion string="tfoot" />
+		<completion string="th" />
+		<completion string="thead" />
+		<completion string="tr" />
+		<completion string="tt" />
+		<completion string="u" />
+		<completion string="ul" />
+		<completion string="var" />
+		<completion string="title" />
+		<completion string="body" />
+	</set>
+	
+</codesense>

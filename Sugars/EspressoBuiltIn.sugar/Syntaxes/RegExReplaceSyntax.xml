@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<syntax name="espresso.built-in.regex-replace-expression">
+    <zones>
+    
+        <zone name="regex-replace.conditional">
+            <starts-with>
+                <expression>(\(\?)(0|[1-9][0-9]*)(:)</expression>
+            		<capture number="1" name="punctuation"/>
+            		<capture number="2" name="regex-replace.back-reference"/>
+            		<capture number="3" name="punctuation"/>
+            </starts-with>
+            <ends-with>
+                <expression>\)</expression>
+            		<capture number="0" name="punctuation"/>
+            </ends-with>
+            <subzones>
+                <include syntax="self"/>
+            </subzones>
+        </zone>
+    
+        <zone name="regex-replace.modifier">
+            <expression>\\[ulULE]</expression>
+        </zone>
+        
+        <zone name="regex-replace.escape">
+            <expression>\\[\\nrt]</expression>
+        </zone>
+        
+        <zone name="regex-replace.back-reference">
+            <expression>(\\g&lt;)(([0-9]+)|([_a-zA-Z][_0-9a-zA-Z]*))(>)</expression>
+            <capture number="1" name="punctuation"/>
+            <capture number="5" name="punctuation"/>
+        </zone>
+        
+        <zone name="regex-replace.back-reference">
+            <expression>([\$\\])[0-9]</expression>
+            <capture number="1" name="punctuation"/>
+        </zone>
+        
+    </zones>
+</syntax>

@@ -1,0 +1,34 @@
+/*
+	@theme CSS Placeholder
+	@placeholder css
+*/
+
+@base {
+	color: #000;
+	background-color: #fff;
+}
+
+css {
+	spell-check: disabled;
+}
+
+css.selector, css.selector > entity > punctuation {
+	color: #3a77bf;
+}
+
+css > property-name {
+	color: #d4430d;
+}
+
+css > property-value {
+	color: #43a202;
+}
+
+css.at-rule string, css.at-rule string punctuation, media.css > block > punctuation, property-list.css > property-value > punctuation {
+	color: #474747;
+}
+
+keyword.important.css {
+	font-weight: bold;
+	color: #6700b9;
+}

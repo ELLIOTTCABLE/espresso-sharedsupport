@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemizer>
+
+	<recipe name="built-in.group.collection">
+		<start-selector>itemize.group-start:has-child(name:capture(name)), itemize.group-start</start-selector>
+		<end-selector>itemize.group-end</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+</itemizer>

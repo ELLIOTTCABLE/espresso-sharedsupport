@@ -1,0 +1,132 @@
+/*
+	@theme Espresso tutti colori
+	@override-placeholders html, xml, sourcecode.js
+*/
+
+@base {
+	color: #000000;
+	background-color: #FFFFFF;
+	insertion-point-color: #000000;
+	selection-background-color: default;
+}
+
+tag, source, sourcecode {
+	spell-check: disabled;
+}
+
+tag, tag > string > punctuation {
+	oldcolor: #8FCFFF;
+	lessoldcolor: #9FDFFF;
+	color: #5FAFEF;
+}
+
+tag > name, tag > string.quoted - punctuation, attribute-with-value > string.quoted - punctuation {
+	oldcolor: #2F5F7F;
+}
+
+tag>name {
+	color: #2F6F9F;
+	background-color: rgb(244, 250, 255);
+}
+
+attribute-name, punctuation.definition.tag {
+	color: #4F9FCF;
+	newcolor: #6FBFFF;
+}
+
+tag > string.quoted, tag > attribute-with-value > string.quoted {
+	color: #d44950;
+	background-color: #fff; /* FIXME */
+}
+
+tag > string > punctuation {
+	font-weight: normal;
+}
+
+css.embedded attribute-name, css.embedded punctuation.definition.tag {
+	color: #DF9F4F;
+}
+
+comment, comment>punctuation, tag.doctype, tag.doctype > *, tag.doctype > string.quoted {
+	color: #bbb;
+	font-weight: normal;
+}
+
+tag.h1, tag.h1 * {
+	font-weight: bold;
+	color: #000000;
+}
+
+latex.function function - parameter, latex.keyword {
+	color: #699d36;
+}
+
+string.quoted-alt {
+	bluecolor: #1a93ae;
+	bluebackground-color: #f4f9fe;
+	color: #1aa1a1;
+	background-color: rgba(235,252,254,0.5);
+}
+
+string.quoted {
+	color: #bc670f;
+	background-color: rgba(251,233,173,0.1);
+}
+
+string.quoted > punctuation {
+	bluecolor: #5ecae9;
+	color: #e69a4c;
+}
+
+string.quoted > escape {
+	font-weight: bold;
+	background-color: rgba(251,233,173,0.8);
+}
+
+vvariable {
+	color: #7b8c4d;
+}
+
+variable>punctuation {
+	color: #865fdb;
+}
+
+operator {
+	color: #626fc9;
+}
+
+open-bracket, close-bracket {
+	color: #7f7f7f;
+}
+
+support.function, function-call {
+	color: #4e279a;
+	font-weight: boldd;
+}
+
+keyword.control, storage.type {
+	color: #6700b9;
+}
+
+function > name {
+	color: #3a1d72;
+	font-weight: bold;
+}
+
+js.embedded {
+	color: #434343;
+}
+
+constant.numeric, constant.language {
+	color: #7653c1;
+	background-color: #f3f2ff;
+}
+
+invalid {
+	background-color: #f93232;
+	color: #f9f2ce;
+}
+
+textile > header {
+	font-weight: bold;
+}

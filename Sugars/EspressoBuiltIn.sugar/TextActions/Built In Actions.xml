@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<action-recipes>
+	<action id="com.macrabbit.TextActions.ToggleComment" category="actions.text.important">
+	
+		<class>ESToggleCommentAction</class>
+		<title>Un/Comment</title>
+		<key-equivalent>cmd /</key-equivalent>
+		
+	</action>
+	<action id="com.macrabbit.TextActions.CloseTag" category="actions.text.important">
+	
+		<class>ESCloseTagAction</class>
+		<title>Close Tag</title>
+		<key-equivalent>cmd option .</key-equivalent>
+		
+	</action>
+	
+	<action id="com.macrabbit.TextActions.BuiltIn.ShiftRight" category="actions.text.important">
+	
+		<class>ESShiftIndentationTextAction</class>
+		<title>Shift Right</title>
+		<key-equivalent>cmd ]</key-equivalent>
+		<setup>
+			<delta><integer>+1</integer></delta>
+		</setup>
+		
+	</action>
+	
+	<action id="com.macrabbit.TextActions.BuiltIn.ShiftLeft" category="actions.text.important">
+	
+		<class>ESShiftIndentationTextAction</class>
+		<title>Shift Left</title>
+		<key-equivalent>cmd [</key-equivalent>
+		<setup>
+			<delta><integer>-1</integer></delta>
+		</setup>
+		
+	</action>
+	
+</action-recipes>

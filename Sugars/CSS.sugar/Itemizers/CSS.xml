@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemizer>
+
+	<recipe name="built-in.css.at-media.collection">
+		<selector>at-rule.media.css</selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+
+	<recipe name="built-in.css.style">
+		<class>ESStyleItem</class>
+		<start-selector>selector.css:capture(name)</start-selector>
+		<end-selector>property-list.css</end-selector>
+	</recipe>
+
+	<recipe name="built-in.css.comment">
+		<class>ESCommentItem</class>
+		<selector>comment.css</selector>
+	</recipe>
+	
+</itemizer>

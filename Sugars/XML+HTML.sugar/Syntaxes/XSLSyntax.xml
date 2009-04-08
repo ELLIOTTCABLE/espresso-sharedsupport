@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<syntax name="text.xml.xsl">
+	<zones>
+		<include syntax="text.xml"/>
+	</zones>
+</syntax>

@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<syntax name="text.html.basic">
+	<zones>
+		<zone name="tag.preprocessor.xml.html">
+			<starts-with>
+				<expression>(&lt;\?)(xml)</expression>
+				<capture number="1" name="punctuation.definition.begin"/>
+				<capture number="2" name="entity.name"/>
+			</starts-with>
+			<ends-with>
+				<expression>(\?>)</expression>
+				<capture number="1" name="punctuation.definition.end"/>
+			</ends-with>
+			<subzones>
+				<include collection="tag-attributes"/>
+			</subzones>
+		</zone>
+		<zone name="comment.block.html">
+			<starts-with>
+				<expression>&lt;!--</expression>
+				<capture number="0" name="punctuation.definition.begin"/>
+			</starts-with>
+			<ends-with>
+				<expression>--></expression>
+				<capture number="0" name="punctuation.definition.end"/>
+			</ends-with>
+			<subzones>
+				<zone name="invalid.illegal.bad-comments-or-CDATA.html">
+					<expression>--</expression>
+				</zone>
+			</subzones>
+		</zone>
+		<zone name="tag.doctype.html">
+			<starts-with>
+				<expression>(&lt;!)(DOCTYPE)</expression>
+				<capture number="1" name="punctuation.definition.begin"/>
+				<capture number="2" name="entity.name"/>
+			</starts-with>
+			<ends-with>
+				<expression>></expression>
+				<capture number="0" name="punctuation.definition.end"/>
+			</ends-with>
+		</zone>
+		<zone name="tag.self-closing.cdata.html">
+			<starts-with>
+				<expression>&lt;!\[CDATA\[</expression>
+				<capture number="0" name="punctuation.definition"/>
+			</starts-with>
+			<ends-with>
+				<expression>\]\]></expression>
+				<capture number="0" name="punctuation.definition"/>
+			</ends-with>
+		</zone>
+        
+        <!-- Embedded styles -->
+		<zone name="embedded-style.html">
+			<starts-with>
+				<expression>(?=&lt;(?i:style))</expression>
+			</starts-with>
+			<ends-with>
+				<expression>(&lt;/)((?i:style))(>)</expression>
+				<capture number="0" name="tag.close.style.html"/>
+				<capture number="1" name="punctuation.definition"/>
+				<capture number="2" name="entity.name"/>
+				<capture number="3" name="punctuation.definition"/>
+			</ends-with>
+			<subzones>
+				<zone name="tag.open.style.html">
+					<starts-with>
+						<expression>(&lt;)((?i:style))</expression>
+						<capture number="1" name="punctuation.definition.begin"/>
+						<capture number="2" name="entity.name"/>
+					</starts-with>
+					<ends-with>
+						<expression>(/?)(>)</expression>
+						<capture number="1" name="punctuation.definition.self-closing"/>
+						<capture number="2" name="punctuation.definition.end"/>
+					</ends-with>
+					<subzones>
+						<include collection="tag-attributes"/>
+					</subzones>
+				</zone>
+				<zone name="embedded.styling.css">
+					<starts-with>
+						<expression>(?&lt;=>)\s*(&lt;!--)?</expression>
+						<capture number="1" name="comment.embedded"/>
+					</starts-with>
+					<ends-with>
+						<expression>(-->\s*)?(?=&lt;/(?i:style))</expression>
+						<capture number="1" name="comment.embedded"/>
+					</ends-with>
+					<subzones>
+						<include syntax="styling.css"/>
+					</subzones>
+				</zone>
+				<include syntax="styling.css"/>
+			</subzones>
+		</zone>
+        
+        <!-- Embedded JavaScript block -->
+		<zone name="embedded-javascript.html">
+			<starts-with>
+				<expression>(?=&lt;(?i:script))</expression>
+			</starts-with>
+			<ends-with>
+				<expression>(&lt;/)((?i:script))(>)</expression>
+				<capture number="0" name="tag.close.script.html"/>
+				<capture number="1" name="punctuation.definition.begin"/>
+				<capture number="2" name="entity.name"/>
+				<capture number="3" name="punctuation.definition.end"/>
+			</ends-with>
+			<subzones>
+				<zone name="tag.open.script.html">
+					<starts-with>
+						<expression>(&lt;)((?i:script))</expression>
+						<capture number="1" name="punctuation.definition.begin"/>
+						<capture number="2" name="entity.name"/>
+					</starts-with>
+					<ends-with>
+						<expression>(/?)(>)</expression>
+						<capture number="1" name="punctuation.definition.self-closing"/>
+						<capture number="2" name="punctuation.definition.end"/>
+					</ends-with>
+					<subzones>
+						<include collection="tag-attributes"/>
+					</subzones>
+				</zone>
+				<zone name="embedded.sourcecode.js">
+					<starts-with>
+						<expression>(?&lt;=>)(&lt;!--)</expression>
+						<capture number="1" name="comment.embedded"/>
+					</starts-with>
+					<ends-with>
+						<expression>(-->\s*)?(?=&lt;/(?i:script))</expression>
+						<capture number="1" name="comment.embedded"/>
+					</ends-with>
+					<subzones>
+						<include syntax="sourcecode.js"/>
+					</subzones>
+				</zone>
+				<zone name="embedded.sourcecode.js">
+					<starts-with>
+						<expression>(?&lt;=>)\s+(&lt;!--)?</expression>
+						<capture number="1" name="comment.embedded"/>
+					</starts-with>
+					<ends-with>
+						<expression>(-->\s*)?(?=&lt;/(?i:script))</expression>
+						<capture number="1" name="comment.embedded"/>
+					</ends-with>
+					<subzones>
+						<include syntax="sourcecode.js"/>
+					</subzones>
+				</zone>
+				<include syntax="sourcecode.js"/>
+			</subzones>
+		</zone>
+		<zone name="tag.self-closing.html">
+			<starts-with>
+				<expression>(&lt;)(img|br|link|meta|hr|input)</expression>
+				<capture number="1" name="punctuation.definition.begin"/>
+				<capture number="2" name="entity.name"/>
+			</starts-with>
+			<ends-with>
+				<expression>(/?)(>)</expression>
+				<capture number="1" name="punctuation.definition.end.self-closing"/>
+				<capture number="2" name="punctuation.definition.end"/>
+			</ends-with>
+			<subzones>
+				<include collection="tag-attributes"/>
+			</subzones>
+		</zone>
+		<zone name="tag.open.other.html">
+			<starts-with>
+				<expression>(&lt;)([a-zA-Z0-9:]+)</expression>
+				<capture number="1" name="punctuation.definition.begin"/>
+				<capture number="2" name="entity.name"/>
+			</starts-with>
+			<ends-with>
+				<expression>(/?)(>)</expression>
+				<capture number="1" name="punctuation.definition.end.self-closing"/>
+				<capture number="2" name="punctuation.definition.end"/>
+			</ends-with>
+			<subzones>
+				<include collection="tag-attributes"/>
+			</subzones>
+		</zone>
+		<zone name="tag.close.other.html">
+			<starts-with>
+				<expression>(&lt;/)([a-zA-Z0-9:]+)</expression>
+				<capture number="1" name="punctuation.definition.begin"/>
+				<capture number="2" name="entity.name"/>
+			</starts-with>
+			<ends-with>
+				<expression>(>)</expression>
+				<capture number="1" name="punctuation.definition.end"/>
+			</ends-with>
+			<subzones>
+				<include collection="tag-attributes"/>
+			</subzones>
+		</zone>
+		<include collection="entities"/>
+		<zone name="invalid.illegal.incomplete.html">
+			<expression>&lt;></expression>
+		</zone>
+		<zone name="invalid.illegal.bad-angle-bracket.html">
+			<expression>&lt;</expression>
+		</zone>
+	</zones>
+    
+    <!-- Zone library -->
+	<library>
+		<collection name="entities">
+			<zone name="constant.character.entity.html">
+				<expression>(&amp;)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)</expression>
+				<capture number="1" name="punctuation.definition.entity.html"/>
+				<capture number="3" name="punctuation.definition.entity.html"/>
+			</zone>
+			<zone name="invalid.illegal.bad-ampersand.html">
+				<expression>&amp;</expression>
+			</zone>
+		</collection>
+		<collection name="tag-attributes">
+            <zone>
+                <expression>\s+([-_a-zA-Z0-9:]+)(=)</expression>
+                <capture number="1" name="attribute-name">
+					<subzones>
+						<zone>
+							<expression>([^:]+)(:)(.*)</expression>
+							<capture number="1" name="namespace"/>
+							<capture number="2" name="punctuation.separator"/>
+							<capture number="3" name="localname"/>
+						</zone>
+					</subzones>
+				</capture>
+                <capture number="2" name="punctuation.separator.attribute"/>
+                <capture number="3" name="punctuation.separator.namespace"/>
+            </zone>
+            <include collection="strings"/>
+        </collection>
+		
+        <collection name="strings">
+            <zone name="attribute-value.string.quoted.double">
+                <starts-with>
+                    <expression>"</expression>
+                    <capture number="0" name="punctuation.definition.begin"/>
+                </starts-with>
+                <ends-with>
+                    <expression>"</expression>
+                    <capture number="0" name="punctuation.definition.end"/>
+                </ends-with>
+				<subzones name="attribute-value.value" />
+            </zone>
+            <zone name="attribute-value.string.quoted.single">
+                <starts-with>
+                    <expression>'</expression>
+                    <capture number="0" name="punctuation.definition.begin"/>
+                </starts-with>
+                <ends-with>
+                    <expression>'</expression>
+                    <capture number="0" name="punctuation.definition.end"/>
+                </ends-with>
+				<subzones name="attribute-value.value" />
+            </zone>
+        </collection>
+	</library>
+</syntax>
