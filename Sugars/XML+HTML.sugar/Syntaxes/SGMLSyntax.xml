@@ -158,7 +158,7 @@
 		<collection name="valued-attribute">
 			<zone name="attribute">
 	            <starts-with>
-	                <expression>([_:A-Za-z][-._:A-Za-z0-9]*:?([_:A-Za-z][-._A-Za-z0-9]*)\s*(=)\s*('|")</expression>
+	                <expression>([_:A-Za-z][-._:A-Za-z0-9]*:)?([_:A-Za-z][-._A-Za-z0-9]*)\s*(=)\s*('|")</expression>
 	                <capture number="1" name="element.namespaces">
 						<subzones>
 							<zone>
@@ -178,7 +178,7 @@
 						This wouldn't be necessary if the above `element.standalone`
 						zone worked
 					-->
-					<capture number="5" name="delimiter.balanced.quote.end"/>
+					<capture number="0" name="delimiter.balanced.quote.end"/>
 	            </ends-with>
 	        </zone>
 		</collection>
