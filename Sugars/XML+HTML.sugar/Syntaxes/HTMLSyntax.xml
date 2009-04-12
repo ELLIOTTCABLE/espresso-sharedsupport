@@ -27,9 +27,11 @@
 				<capture number="0" name="delimiter.balanced.comment.end"/>
 			</ends-with>
 			<subzones>
-				<!-- TODO not quite sure what to rename this -->
-				<zone name="invalid.illegal.bad-comments-or-CDATA.html">
+				<zone name="invalid.partial-comment-end">
 					<expression>--</expression>
+				</zone>
+				<zone name="invalid.overlong-comment-end">
+					<expression>---></expression>
 				</zone>
 			</subzones>
 		</zone>
