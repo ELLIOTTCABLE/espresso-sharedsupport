@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <settings>
-
+	
+	<language id="espresso.default.SGML" hidden="true">
+		
+		<!-- The root zone name for this language. This can be defined in one of the syntax definitions under Syntaxes, or in another bundle. -->
+		<root-zone>com.macrabbit.Espresso.Syntax.Declarative.SGML</root-zone>
+		
+		<!-- The name of the language as presented to the user -->
+		<name>SGML</name>
+		
+		<!-- Ways to detect if a certain file is in this language -->
+		<detectors>
+			<extension>sgml</extension>
+			<match-content lines="2"><![CDATA[<!DOCTYPE]]></match-content>
+		</detectors>
+		
+	</language>
+	
 	<language id="espresso.default.HTML">
 		
 		<!-- The root zone name for this language. This can be defined in one of the syntax definitions under Syntaxes, or in another bundle. -->

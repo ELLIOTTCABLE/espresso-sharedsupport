@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<!--
+	This is *not* a full, or possibly even a valid, SGML syntax!
+	
+	It is intended only to contain the subset of SGML that is common to XML
+	dialects, XHTML, and HTML, for the purposes of inclusion into said Sugars.
+	
+	I doubt anyone would care, who actually writes SGML nowadays anyway?
+-->
+<syntax name="com.macrabbit.Espresso.Syntax.Declarative.SGML">
+    <zones>
+		<zone name="metadata.processing.processing-instruction.doctype">
+			<starts-with>
+				<expression>(&lt;!)(DOCTYPE)</expression>
+				<capture number="0" name="metadata.processing.processing-instruction.doctype.begin"/>
+				<capture number="1" name="delimiter.balanced.processing-instruction.begin"/>
+				<capture number="2" name="processing-instruction.name"/>
+			</starts-with>
+			<ends-with>
+				<expression>(>)</expression>
+				<capture number="0" name="metadata.processing.processing-instruction.doctype.end"/>
+				<capture number="1" name="delimiter.balanced.processing.instruction.end"/>
+			</ends-with>
+		</zone>
+        <zone name="metadata.comment.block">
+			<starts-with>
+				<expression>&lt;!--</expression>
+				<capture number="0" name="delimiter.balanced.comment.begin"/>
+			</starts-with>
+			<ends-with>
+				<expression>--></expression>
+				<capture number="0" name="delimiter.balanced.comment.end"/>
+			</ends-with>
+			<subzones>
+				<zone name="invalid.partial-comment-end">
+					<expression>--</expression>
+				</zone>
+				<zone name="invalid.overlong-comment-end">
+					<expression>---></expression>
+				</zone>
+			</subzones>
+		</zone>
+		<zone name="element.cdata">
+			<starts-with>
+				<expression>(&lt;)!\[CDATA\[</expression>
+				<capture number="0" name="cdata.begin"/>
+				<capture number="1" name="delimiter.balanced.cdata.begin"/>
+			</starts-with>
+			<ends-with>
+				<expression>\]\](>)</expression>
+				<capture number="0" name="cdata.end"/>
+				<capture number="1" name="delimiter.balanced.cdata.end"/>
+			</ends-with>
+		</zone>
+		<!--
+			This isn't currently possible; the `<starts-with>` expression has
+			to be the same as the `<starts-with>` expression for
+			`element.begin`. Only the `<ends-with>` expressions differ.
+		-->
+		<!--
+		<zone name="element.standalone">
+            <starts-with>
+                <expression>(&lt;)([_:A-Za-z][-._:A-Za-z0-9]*(:))?([_:A-Za-z][-._A-Za-z0-9]*)</expression>
+                <capture number="1" name="delimiter.balanced.element.begin"/>
+                <capture number="2" name="element.namespaces">
+					<subzones>
+						<zone>
+							<expression>(.+?)(:)</expression>
+							<capture number="1" name="element.namespace"/>
+							<capture number="2" name="delimiter.separator.namespace"/>
+						</zone>
+					</subzones>
+				</capture>
+				<capture number="3" name="delimiter.separator.namespace">
+				<capture number="4" name="element.name">
+            </starts-with>
+            <ends-with>
+                <expression>(/)(>)</expression>
+                <capture number="1" name="delimiter.terminator"/>
+                <capture number="2" name="delimiter.balanced.element.end"/>
+            </ends-with>
+            <subzones>
+                <include collection="attributes"/>
+            </subzones>
+        </zone>
+		-->
+        <zone name="element.begin">
+            <starts-with>
+                <expression>(&lt;)([_:A-Za-z][-._:A-Za-z0-9]*(:))?([_:A-Za-z][-._A-Za-z0-9]*)</expression>
+                <capture number="1" name="delimiter.balanced.element.begin"/>
+                <capture number="2" name="element.namespaces">
+					<subzones>
+						<zone>
+							<expression>(.+?)(:)</expression>
+							<capture number="1" name="element.namespace"/>
+							<capture number="2" name="delimiter.separator.namespace"/>
+						</zone>
+					</subzones>
+				</capture>
+				<capture number="3" name="delimiter.separator.namespace"/>
+				<capture number="4" name="element.name"/>
+            </starts-with>
+            <ends-with>
+                <expression>(/)?(>)</expression>
+				<!--
+					This wouldn't be necessary if the above `element.standalone`
+					zone worked
+				-->
+				<capture number="1" name="delimiter.terminator"/>
+                <capture number="2" name="delimiter.balanced.element.end"/>
+            </ends-with>
+            <subzones>
+                <include collection="attributes"/>
+            </subzones>
+        </zone>
+		<zone name="element.end">
+			<expression>(&lt;)(/)([_:A-Za-z][-._:A-Za-z0-9]*(:))?([_:A-Za-z][-._A-Za-z0-9]*)\s*(>)</expression>
+			<capture number="1" name="delimiter.balanced.element.begin"/>
+			<capture number="2" name="delimiter.terminator"/>
+			<capture number="3" name="element.namespaces">
+				<subzones>
+					<zone>
+						<expression>(.+?)(:)</expression>
+						<capture number="1" name="element.namespace"/>
+						<capture number="2" name="delimiter.separator.namespace"/>
+					</zone>
+				</subzones>
+			</capture>
+			<capture number="4" name="delimiter.separator.namespace"/>
+			<capture number="5" name="element.name"/>
+			<capture number="6" name="delimiter.balanced.element.end"/>
+        </zone>
+		<include collection="entities"/>
+		<zone name="invalid.empty-tag">
+			<expression>&lt;></expression>
+		</zone>
+		<zone name="invalid.bad-angle-bracket">
+			<expression>&lt;</expression>
+		</zone>
+    </zones>
+	
+    <library>
+		
+		<collection name="entities">
+			<zone name="literal.entity.character">
+				<expression>(&amp;)(?:(.{0})([a-zA-Z0-9]+)|(#)([0-9]+)|(#x)([0-9a-fA-F]+))(;)</expression>
+				<capture number="1" name="delimiter.entity.begin"/>
+				<capture number="2" name="delimiter.entity.type"/>
+				<capture number="3" name="entity.name"/>
+				<capture number="4" name="delimiter.entity.end"/>
+			</zone>
+			<zone name="invalid.illegal.bad-ampersand.html">
+				<expression>&amp;</expression>
+			</zone>
+		</collection>
+		
+		<collection name="attributes">
+			<include collection="valued-attribute"/>
+			<include collection="boolean-attribute"/>
+		</collection>
+		<collection name="valued-attribute">
+			<zone name="attribute">
+	            <starts-with>
+	                <expression>([_:A-Za-z][-._:A-Za-z0-9]*(:))?([_:A-Za-z][-._A-Za-z0-9]*)\s*(=)\s*('|")</expression>
+	                <capture number="1" name="element.namespaces">
+						<subzones>
+							<zone>
+								<expression>(.+?)(:)</expression>
+								<capture number="1" name="element.namespace"/>
+								<capture number="2" name="delimiter.separator.namespace"/>
+							</zone>
+						</subzones>
+					</capture>
+					<capture number="2" name="delimiter.separator.namespace"/>
+					<capture number="3" name="element.name"/>
+					<capture number="4" name="delimiter.separator.pairing.attribute-value"/>
+					<capture number="5" name="delimiter.balanced.quote.begin"/>
+	            </starts-with>
+	            <ends-with>
+	                <expression>\5</expression>
+					<!--
+						This wouldn't be necessary if the above `element.standalone`
+						zone worked
+					-->
+					<capture number="5" name="delimiter.balanced.quote.end"/>
+	            </ends-with>
+	        </zone>
+		</collection>
+		<collection name="boolean-attribute">
+			<zone name="attribute.boolean">
+				<expression>([_:A-Za-z][-._:A-Za-z0-9]*(:))?([_:A-Za-z][-._A-Za-z0-9]*)</expression>
+				<capture number="1" name="element.namespaces">
+					<subzones>
+						<zone>
+							<expression>(.+?)(:)</expression>
+							<capture number="1" name="element.namespace"/>
+							<capture number="2" name="delimiter.separator.namespace"/>
+						</zone>
+					</subzones>
+				</capture>
+				<capture number="2" name="delimiter.separator.namespace"/>
+				<capture number="3" name="element.name"/>
+				<capture number="4" name="delimiter.separator.pairing.attribute-value"/>
+				<capture number="5" name="delimiter.balanced.quote.begin"/>
+			</zone>
+		</collection>
+		
+    </library>
+</syntax>
