@@ -173,7 +173,7 @@
 					<capture number="4" name="delimiter.balanced.quote.begin"/>
 	            </starts-with>
 	            <ends-with>
-	                <expression>\5</expression>
+	                <expression>\4</expression>
 					<!--
 						This wouldn't be necessary if the above `element.standalone`
 						zone worked
