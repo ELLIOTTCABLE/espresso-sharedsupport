@@ -60,7 +60,7 @@
 		<!--
 		<zone name="element.standalone">
             <starts-with>
-                <expression>(&lt;)([_:A-Za-z][-._:A-Za-z0-9]*(:))?([_:A-Za-z][-._A-Za-z0-9]*)</expression>
+                <expression>(&lt;)([_:A-Za-z][-._:A-Za-z0-9]*:)?([_:A-Za-z][-._A-Za-z0-9]*)</expression>
                 <capture number="1" name="delimiter.balanced.element.begin"/>
                 <capture number="2" name="element.namespaces">
 					<subzones>
@@ -71,8 +71,7 @@
 						</zone>
 					</subzones>
 				</capture>
-				<capture number="3" name="delimiter.separator.namespace">
-				<capture number="4" name="element.name">
+				<capture number="3" name="element.name">
             </starts-with>
             <ends-with>
                 <expression>(/)(>)</expression>
@@ -86,7 +85,7 @@
 		-->
         <zone name="element.begin">
             <starts-with>
-                <expression>(&lt;)([_:A-Za-z][-._:A-Za-z0-9]*(:))?([_:A-Za-z][-._A-Za-z0-9]*)</expression>
+                <expression>(&lt;)([_:A-Za-z][-._:A-Za-z0-9]*:)?([_:A-Za-z][-._A-Za-z0-9]*)</expression>
                 <capture number="1" name="delimiter.balanced.element.begin"/>
                 <capture number="2" name="element.namespaces">
 					<subzones>
@@ -97,8 +96,7 @@
 						</zone>
 					</subzones>
 				</capture>
-				<capture number="3" name="delimiter.separator.namespace"/>
-				<capture number="4" name="element.name"/>
+				<capture number="3" name="element.name"/>
             </starts-with>
             <ends-with>
                 <expression>(/)?(>)</expression>
@@ -114,7 +112,7 @@
             </subzones>
         </zone>
 		<zone name="element.end">
-			<expression>(&lt;)(/)([_:A-Za-z][-._:A-Za-z0-9]*(:))?([_:A-Za-z][-._A-Za-z0-9]*)\s*(>)</expression>
+			<expression>(&lt;)(/)([_:A-Za-z][-._:A-Za-z0-9]*:)?([_:A-Za-z][-._A-Za-z0-9]*)\s*(>)</expression>
 			<capture number="1" name="delimiter.balanced.element.begin"/>
 			<capture number="2" name="delimiter.terminator"/>
 			<capture number="3" name="element.namespaces">
@@ -126,9 +124,8 @@
 					</zone>
 				</subzones>
 			</capture>
-			<capture number="4" name="delimiter.separator.namespace"/>
-			<capture number="5" name="element.name"/>
-			<capture number="6" name="delimiter.balanced.element.end"/>
+			<capture number="4" name="element.name"/>
+			<capture number="5" name="delimiter.balanced.element.end"/>
         </zone>
 		<include collection="entities"/>
 		<zone name="invalid.empty-tag">
@@ -161,7 +158,7 @@
 		<collection name="valued-attribute">
 			<zone name="attribute">
 	            <starts-with>
-	                <expression>([_:A-Za-z][-._:A-Za-z0-9]*(:))?([_:A-Za-z][-._A-Za-z0-9]*)\s*(=)\s*('|")</expression>
+	                <expression>([_:A-Za-z][-._:A-Za-z0-9]*:?([_:A-Za-z][-._A-Za-z0-9]*)\s*(=)\s*('|")</expression>
 	                <capture number="1" name="element.namespaces">
 						<subzones>
 							<zone>
@@ -171,10 +168,9 @@
 							</zone>
 						</subzones>
 					</capture>
-					<capture number="2" name="delimiter.separator.namespace"/>
-					<capture number="3" name="element.name"/>
-					<capture number="4" name="delimiter.separator.pairing.attribute-value"/>
-					<capture number="5" name="delimiter.balanced.quote.begin"/>
+					<capture number="2" name="element.name"/>
+					<capture number="3" name="delimiter.separator.pairing.attribute-value"/>
+					<capture number="4" name="delimiter.balanced.quote.begin"/>
 	            </starts-with>
 	            <ends-with>
 	                <expression>\5</expression>
@@ -188,7 +184,7 @@
 		</collection>
 		<collection name="boolean-attribute">
 			<zone name="attribute.boolean">
-				<expression>([_:A-Za-z][-._:A-Za-z0-9]*(:))?([_:A-Za-z][-._A-Za-z0-9]*)</expression>
+				<expression>([_:A-Za-z][-._:A-Za-z0-9]*:)?([_:A-Za-z][-._A-Za-z0-9]*)</expression>
 				<capture number="1" name="element.namespaces">
 					<subzones>
 						<zone>
@@ -198,10 +194,9 @@
 						</zone>
 					</subzones>
 				</capture>
-				<capture number="2" name="delimiter.separator.namespace"/>
-				<capture number="3" name="element.name"/>
-				<capture number="4" name="delimiter.separator.pairing.attribute-value"/>
-				<capture number="5" name="delimiter.balanced.quote.begin"/>
+				<capture number="2" name="element.name"/>
+				<capture number="3" name="delimiter.separator.pairing.attribute-value"/>
+				<capture number="4" name="delimiter.balanced.quote.begin"/>
 			</zone>
 		</collection>
 		
