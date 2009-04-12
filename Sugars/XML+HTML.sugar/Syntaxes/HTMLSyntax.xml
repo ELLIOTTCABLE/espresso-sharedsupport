@@ -1,15 +1,17 @@
 <?xml version="1.0"?>
 <syntax name="text.html.basic">
 	<zones>
-		<zone name="metadata.processing.tag.preprocessor.xml">
+		<zone name="metadata.processing.processing-instruction.xml">
 			<starts-with>
 				<expression>(&lt;\?)(xml)</expression>
-				<capture number="1" name="delimiter.punctuation.definition.tag.begin"/>
-				<capture number="2" name="entity.name"/>
+				<capture number="0" name="metadata.processing.processing-instruction.xml.begin"/>
+				<capture number="1" name="delimiter.balanced.processing-instruction.begin"/>
+				<capture number="2" name="processing-instruction.name"/>
 			</starts-with>
 			<ends-with>
 				<expression>(\?>)</expression>
-				<capture number="1" name="delimiter.punctuation.definition.tag.end"/>
+				<capture number="0" name="metadata.processing.processing-instruction.xml.end"/>
+				<capture number="1" name="delimiter.balanced.processing-instruction.end"/>
 			</ends-with>
 			<subzones>
 				<include collection="tag-attributes"/>
@@ -31,15 +33,17 @@
 				</zone>
 			</subzones>
 		</zone>
-		<zone name="metadata.processing.doctype.tag">
+		<zone name="metadata.processing.processing-instruction.doctype">
 			<starts-with>
 				<expression>(&lt;!)(DOCTYPE)</expression>
-				<capture number="1" name="delimiter.punctuation.definition.tag.begin"/>
-				<capture number="2" name="entity.name"/>
+				<capture number="0" name="metadata.processing.processing-instruction.doctype.begin"/>
+				<capture number="1" name="delimiter.balanced.processing-instruction.begin"/>
+				<capture number="2" name="processing-instruction.name"/>
 			</starts-with>
 			<ends-with>
-				<expression>></expression>
-				<capture number="0" name="delimiter.punctuation.definition.tag.end"/>
+				<expression>(>)</expression>
+				<capture number="0" name="metadata.processing.processing-instruction.doctype.end"/>
+				<capture number="1" name="delimiter.balanced.processing.instruction.end"/>
 			</ends-with>
 		</zone>
 		<zone name="metadata.processing.tag.self-closing.cdata">
