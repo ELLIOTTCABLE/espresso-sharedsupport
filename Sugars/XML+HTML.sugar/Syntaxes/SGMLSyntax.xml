@@ -146,7 +146,7 @@
 				<capture number="3" name="entity.name"/>
 				<capture number="4" name="delimiter.entity.end"/>
 			</zone>
-			<zone name="invalid.illegal.bad-ampersand.html">
+			<zone name="invalid.bad-ampersand">
 				<expression>&amp;</expression>
 			</zone>
 		</collection>
