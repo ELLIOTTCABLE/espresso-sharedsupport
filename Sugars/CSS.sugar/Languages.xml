@@ -11,6 +11,8 @@
 			<extension>css</extension>
 		</detectors>
 		
+		<default-extension>css</default-extension>
+		
 	</language>
 	
 </settings>

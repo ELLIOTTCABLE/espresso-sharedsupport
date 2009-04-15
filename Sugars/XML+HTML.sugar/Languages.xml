@@ -14,11 +14,11 @@
 		<detectors>
 			<extension>html</extension>
 			<extension>htm</extension>
+			<extension>xhtml</extension>
 			<extension>shtml</extension>
 			<extension>shtm</extension>
-			<extension>xhtml</extension>
-			<match-content lines="2"><![CDATA[<!DOCTYPE html PUBLIC]]></match-content>
-			<match-content lines="1"><![CDATA[<html]]></match-content>
+			<match-content lines="2"><![CDATA[(?i)<!DOCTYPE html PUBLIC]]></match-content>
+			<match-content lines="1"><![CDATA[(?i)<html]]></match-content>
 		</detectors>
 		
 	</language>
@@ -39,8 +39,8 @@
 		<root-zone>text.xml.xsl</root-zone>
 		<name>XSL</name>
 		<detectors>
-			<extension>xsl</extension>
 			<extension>xslt</extension>
+			<extension>xsl</extension>
 		</detectors>
 		
 	</language>
