@@ -31,6 +31,7 @@
 			<extension>html</extension>
 			<extension>htm</extension>
 			<extension>xhtml</extension>
+			<extension>xhtm</extension>
 			<extension>shtml</extension>
 			<extension>shtm</extension>
 			<match-content lines="2"><![CDATA[(?i)<!DOCTYPE html PUBLIC]]></match-content>
