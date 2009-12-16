@@ -12,6 +12,7 @@
 		</detectors>
 		
 		<default-extension>css</default-extension>
+		<default-mime-type>text/css</default-mime-type>
 		
 	</language>
 	

@@ -9,7 +9,7 @@ CodeSense Providers map contexts in a document to possible completions. The actu
 	<!-- CSS property values -->
 	<provider>
 		<!-- The selector element specifies in what document contexts the provider is active. -->
-		<selector>css > property-name:capture(name) + property-value - punctuation.separator</selector>
+		<selector>css > property-name:capture(name) + property-value - punctuation.separator, css > property-name:capture(name) + property-value > punctuation.terminator</selector>
 		
 		<!-- The completions element points to the CodeSense Library key that has to be used. It can contain placeholders for captured pieces of text from the selector. -->
 		<completions>com.macrabbit.css.property.${name}</completions>

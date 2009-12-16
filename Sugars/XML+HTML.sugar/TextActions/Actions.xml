@@ -12,7 +12,7 @@
 	
 	<snippet id="com.macrabbit.TextActions.XMLHTML.NewTag" category="hidden">
 		<title>New Tag</title>
-		<text>&lt;${1:tag}>$0&lt;/${1/([a-zA-Z:]*).*/\1/}></text>
+		<text>&lt;${1:tag}>$0&lt;/${1/([a-zA-Z0-9:\-]*).*/\1/}></text>
 		<when-disabled>hide</when-disabled>
 	</snippet>
 	

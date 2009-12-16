@@ -8,6 +8,7 @@
 	background-color: #FFFFFF;
 	insertion-point-color: #000000;
 	selection-background-color: default;
+	current-line-background-color: #fff8dd;
 }
 
 tag, source, sourcecode {
@@ -55,10 +56,6 @@ comment, comment>punctuation, tag.doctype, tag.doctype > *, tag.doctype > string
 tag.h1, tag.h1 * {
 	font-weight: bold;
 	color: #000000;
-}
-
-latex.function function - parameter, latex.keyword {
-	color: #699d36;
 }
 
 string.quoted-alt {

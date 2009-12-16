@@ -55,7 +55,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="repeat-y" />
 		<completion string="no-repeat" />
 		<completion string="inherit" />
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 	</set>
 	<set name="com.macrabbit.css.property.background-attachment">
 		<completion string="scroll" />
@@ -63,7 +63,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.background-color">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.background-image">
@@ -86,7 +86,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="none" />
 		<completion string="hidden" />
 		<completion string="dotted" />
@@ -103,7 +103,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border-bottom">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="none" />
 		<completion string="hidden" />
 		<completion string="dotted" />
@@ -120,7 +120,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border-bottom-color">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border-bottom-style">
@@ -148,11 +148,11 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border-color">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border-left">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="none" />
 		<completion string="hidden" />
 		<completion string="dotted" />
@@ -169,7 +169,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border-left-color">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border-left-style">
@@ -192,7 +192,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border-right">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="none" />
 		<completion string="hidden" />
 		<completion string="dotted" />
@@ -209,7 +209,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border-right-color">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border-right-style">
@@ -248,7 +248,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border-top">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="none" />
 		<completion string="hidden" />
 		<completion string="dotted" />
@@ -265,7 +265,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border-top-color">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.border-top-style">
@@ -316,7 +316,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.color">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.content">
@@ -377,6 +377,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="compact" />
 		<completion string="marker" />
 		<completion string="table" />
+		<completion string="inline-block" />
 		<completion string="inline-table" />
 		<completion string="table-row-group" />
 		<completion string="table-header-group" />
@@ -595,7 +596,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.outline">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="invert" />
 		<completion string="none" />
 		<completion string="hidden" />
@@ -613,7 +614,7 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inherit" />
 	</set>
 	<set name="com.macrabbit.css.property.outline-color">
-		<completion string="@color" />
+		<!--completion string="@color" /-->
 		<completion string="invert" />
 		<completion string="inherit" />
 	</set>

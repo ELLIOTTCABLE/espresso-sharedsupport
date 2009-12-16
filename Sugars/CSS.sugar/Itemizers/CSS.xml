@@ -18,5 +18,10 @@
 		<class>ESCommentItem</class>
 		<selector>comment.css</selector>
 	</recipe>
+
+	<recipe name="built-in.css.at-import">
+		<class>ESStyleImportItem</class>
+		<selector>at-rule.import.css</selector>
+	</recipe>
 	
 </itemizer>
